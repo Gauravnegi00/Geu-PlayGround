@@ -1,16 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import Custom_btn from './components/Custom_btn';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import LoginPage from './components/LoginPage';
+import HomePage from './components/HomePage';
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline text-red-800">
-      Hello world!
-    </h1>
-    <Custom_btn data="show" />
-    <Custom_btn data="Login" />
-    <Custom_btn data="signup" />
-    <Custom_btn data="check" />
+      <LandingPage />
     </div>
   );
 }

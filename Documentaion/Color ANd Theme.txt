@@ -2,8 +2,10 @@
 
 new
 #FF970E(orange)
-#7684FF(blue)
+#A9B3FF(blue)
 
-
+5062ed(text )
 https://www.flaticon.com/uicons/interface-icons (for icon)
 www.freepik.com(illuration)
+
+
