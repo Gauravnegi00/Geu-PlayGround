@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import photo from './Assests/login.png';
+import loginImg from './Assests/illustration.png';
 
-import photo from './Assests/login.png'
-import loginImg from './Assests/illustration.png'
-
-
-function LoginPage() {
+function LoginPage({ onLogin }) {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -32,18 +30,29 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!isLogin) {
-      // POST request to save registration details in db.json
-      try {
-        const response = await axios.post('http://localhost:5000/users', formData);
+    try {
+      if (isLogin) {
+        // Check login credentials
+        const response = await axios.get('http://localhost:5000/users');
+        const users = response.data;
+        const user = users.find(
+          (u) => u.email === formData.email && u.password === formData.password
+        );
+
+        if (user) {
+          localStorage.setItem('isLoggedIn', 'true'); // Store login state
+          onLogin(true); // Notify parent component of successful login
+        } else {
+          alert('Invalid email or password');
+        }
+      } else {
+        // POST request to save registration details in db.json
+        await axios.post('http://localhost:5000/users', formData);
         alert('Registration successful');
-        console.log(response.data);
-      } catch (error) {
-        console.error('There was an error registering!', error);
+        toggleForm(); // Switch to login form
       }
-    } else {
-      // You can handle the login logic here
-      alert('Login logic goes here');
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
 
@@ -51,10 +60,8 @@ function LoginPage() {
     <div className='width height flex justify-center'>
       <div className='card w-[80%] h-[80%] mt-8 flex'>
         <img src={photo} alt='loginImg' />
-
         <div className="w-1/2 h-full flex flex-col justify-center p-8 relative border-none">
           <img src={loginImg} alt='img' className='absolute w-[300px] right-0 top-[-50px]' />
-
           {isLogin ? (
             <>
               <h2 className="text-[25px] text-blue-text font-bold text-center mb-6 z-10">Welcome Back</h2>
