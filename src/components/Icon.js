@@ -8,6 +8,7 @@ import { ReactComponent as UserIcon } from './icons/user.svg';
 import { ReactComponent as compilerIcon } from './icons/compiler.svg';
 import { ReactComponent as theoryIcon } from './icons/theory.svg';
 import { ReactComponent as contestIcon } from './icons/contest.svg';
+import { ReactComponent as javaIcon } from './icons/java.svg';
 
 const icons = {
   home: HomeIcon,
@@ -17,7 +18,8 @@ const icons = {
   user: UserIcon,
   compiler:compilerIcon,
   theory:theoryIcon,
-  contest:contestIcon
+  contest:contestIcon,
+  java:javaIcon
 
 };
 

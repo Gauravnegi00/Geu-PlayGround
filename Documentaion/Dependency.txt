@@ -1,0 +1,15 @@
+(for server)
+1-npm install json-server
+2-npm install axios
+3-set up db.json
+	{
+	  "users": []
+	}
+4- config package.json
+"scripts": {
+  "start-server": "json-server --watch db.json --port 5000"
+	}
+5-npm run start-server(to run server)
+
+(For react-router-dom)
+1-npm install react-router-dom

@@ -13,6 +13,13 @@
       "email": "gauravnegi@gmail.com",
       "password": "123",
       "university": "GEU"
+    },
+    {
+      "id": "b38f",
+      "fullName": "Jiya Raturi",
+      "email": "jiyaraturi@gmail.com",
+      "password": "123",
+      "university": "GEU"
     }
   ]
 }

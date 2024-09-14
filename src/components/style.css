@@ -73,8 +73,26 @@ body {
     
 }
 .backGround{
-  background-color: #9477f66f;
+  background-color: #3710b86f;
+  /* background-color: #000; */
   
-
 }
-
+.centerDiv{
+  background-color: rgba(255, 255, 255, 0.47);
+}
+.glass-card {
+  width: 350px;
+  height: 250px; /* Adjusted height for better visibility */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 8px 32px rgba(31, 38, 135, 0.37);
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
