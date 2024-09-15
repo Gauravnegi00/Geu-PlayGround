@@ -1,5 +1,12 @@
 {
   "users": [
-    
+    {
+      "id": "b730",
+      "fullName": "Gaurav negi",
+      "email": "gauravnegi@gmail.com",
+      "password": "123",
+      "university": "GEU",
+      "preferredLanguage": "C++"
+    }
   ]
 }
