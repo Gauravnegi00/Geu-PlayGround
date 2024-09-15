@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import photo from './Assests/login.png';
-import loginImg from './Assests/illustration.png';
+import photo from './Assests/login.png'; 
+import loginImg from './Assests/illustration.png'; 
 
 function LoginPage({ onLogin }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -9,47 +9,41 @@ function LoginPage({ onLogin }) {
     fullName: '',
     email: '',
     password: '',
-    university: ''
+    university: '',
+    preferredLanguage:''
   });
 
-  // Toggle between login and registration
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-  };
+  const toggleForm = () => setIsLogin(!isLogin);
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    setFormData(prevData => ({ ...prevData, [name]: value }));
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       if (isLogin) {
-        // Check login credentials
-        const response = await axios.get('http://localhost:5000/users');
-        const users = response.data;
-        const user = users.find(
-          (u) => u.email === formData.email && u.password === formData.password
-        );
+        // Login logic
+        const { data: users } = await axios.get('http://localhost:5000/users');
+        const user = users.find(u => u.email === formData.email && u.password === formData.password);
 
         if (user) {
-          localStorage.setItem('isLoggedIn', 'true'); // Store login state
-          onLogin(true); // Notify parent component of successful login
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userId', user.id);
+          localStorage.setItem('userName', user.fullName);
+          localStorage.setItem('preferredLanguage',user.preferredLanguage);
+
+          onLogin(true); // Inform parent component about login status
         } else {
           alert('Invalid email or password');
         }
       } else {
-        // POST request to save registration details in db.json
+        // Register logic
         await axios.post('http://localhost:5000/users', formData);
         alert('Registration successful');
-        toggleForm(); // Switch to login form
+        toggleForm(); // Switch to login form after successful registration
       }
     } catch (error) {
       console.error('Error:', error);
@@ -59,12 +53,12 @@ function LoginPage({ onLogin }) {
   return (
     <div className='width height flex justify-center'>
       <div className='card w-[80%] h-[80%] mt-8 flex'>
-        <img src={photo} alt='loginImg' />
-        <div className="w-1/2 h-full flex flex-col justify-center p-8 relative border-none">
-          <img src={loginImg} alt='img' className='absolute w-[300px] right-0 top-[-50px]' />
+        <img src={photo} alt='Login' />
+        <div className="w-1/2 h-full flex flex-col justify-center p-8 border-none relative">
+          <img src={loginImg} alt='Illustration' className='absolute w-[300px] right-0 top-[-50px]' />
           {isLogin ? (
             <>
-              <h2 className="text-[25px] text-blue-text font-bold text-center mb-6 z-10">Welcome Back</h2>
+              <h2 className="text-[25px] text-blue-text font-bold text-center mb-6">Welcome Back</h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
                   type="email"
@@ -97,7 +91,7 @@ function LoginPage({ onLogin }) {
             </>
           ) : (
             <>
-              <h2 className="text-[25px] text-blue-text font-bold text-center mb-6 z-10">Create Account</h2>
+              <h2 className="text-[25px] text-blue-text font-bold text-center mb-6">Create Account</h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
                   type="text"

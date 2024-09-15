@@ -1,25 +1,5 @@
 {
   "users": [
-    {
-      "id": "b640",
-      "fullName": "Divyanshu Rajwar",
-      "email": "divyanshurajwar@gmail.com",
-      "password": "123",
-      "university": "GEU"
-    },
-    {
-      "id": "df2b",
-      "fullName": "Gaurav Negi",
-      "email": "gauravnegi@gmail.com",
-      "password": "123",
-      "university": "GEU"
-    },
-    {
-      "id": "01b5",
-      "fullName": "Falanl singh",
-      "email": "falanl@gmail.com",
-      "password": "123",
-      "university": "GEU"
-    }
+    
   ]
 }

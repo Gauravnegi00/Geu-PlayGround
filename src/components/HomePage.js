@@ -1,14 +1,12 @@
 import React from "react";
-
 import group1 from "./Assests/group1.png";
 function HomePage() {
-
   return (
     <div className="width height  centerDiv  rounded-xl flex justify-between">
       {/* main    */}
       <div className="w-full h-full relative flex flex-col  ">
         {/* HEading */}
-        <div className="w-[700px] p-10 h-[400px]    ">
+        <div className="w-[700px] p-10 h-[400px]    items-center justify-center ">
           <h1 className="h-1/2 w-full text-[40px]    font-semibold ">
             From Bugs to Breakthroughs<span className="font-bold text-blue-text"> Your Coding </span>
             Adventure Begins
@@ -17,27 +15,21 @@ function HomePage() {
         </div>
 
         {/* Cards */}
-        <div className=" w-[100%] h-[500px] flex flex-col p-8 ">
+        <div className="w-[100%]  h-[350px] flex flex-col p-1">
           <div
             id="scrollContainer"
-            className="h-[350px] w-[80%] flex-wrap overflow-x-scroll  flex-col   m-auto   flex items-center justify-center gap-5 "
+            className="h-[350px] w-[87%] flex-wrap overflow-x-scroll flex-col m-auto p-1 flex items-center justify-center z-10 gap-5 scrollbar-hidden"
           >
-            {/* <div className="glass-card">a</div>
-            <div className="glass-card">b</div>
-            <div className="glass-card">c</div>
-            <div className="glass-card">d</div>
-            <div className="glass-card">e</div>
-            <div className="glass-card">f</div> */}
             {data.map((d, index) => (
-        <div key={index} className="glass-card p-4 ">
-          <p className="text-xl font-semibold text-black">{d.Name}</p>
-          <ul className="mt-2 list-disc pl-5 text-black">
-            {d.Data.map((item, i) => (
-              <li key={i}>{item}</li>
+              <div key={index} className="glass-card p-4 relative">
+                <p className="text-xl text-blue-text  font-bold  absolute top-5 ">{d.Name}</p>
+                <ul className="mt-4 list-disc pl-5 text-black">
+                  {d.Data.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
-        </div>
-      ))}
           </div>
           <div className="flex m-auto gap-10 mt-4">
             <button
@@ -46,7 +38,7 @@ function HomePage() {
                   .getElementById("scrollContainer")
                   .scrollBy({ left: -250, behavior: "smooth" })
               }
-              className="bg-gray-200 px-4 py-2 rounded-full"
+              className="bg-blue-text text-white font-extrabold px-4 py-2 rounded-full hover:scale-110"
             >
               ←
             </button>
@@ -55,17 +47,18 @@ function HomePage() {
                 document
                   .getElementById("scrollContainer")
                   .scrollBy({ left: 250, behavior: "smooth" })
-              }
-              className="bg-gray-200 px-4 py-2 rounded-full"
+              } 
+              className="bg-blue-text text-white px-4 py-2 rounded-full hover:scale-110 "
             >
               →
             </button>
           </div>
         </div>
+
       </div>
       {/* Image */}
       
-        <img src={group1} alt="hello" className="w-[250px] absolute top-[80px] right-[195px] " />
+        <img src={group1} alt="hello" className="w-[250px] absolute top-[65px] right-[195px] " />
       
     </div>
   );
@@ -73,46 +66,55 @@ function HomePage() {
 
 const data = [
   {
+    Name: "Coding",
+    Data: [
+      "Beginner-friendly and accessible to all skill levels.",
+      "Step-by-step learning with a structured approach.",
+      "Covers basic to advanced data structures and algorithms.",
+    ],
+  },
+  {
     Name: "DSA",
     Data: [
-      "Organizes data and solves problems efficiently.",
-      "Includes arrays, lists, stacks, and queues.",
-      "Essential for designing scalable software solutions.",
+      "150 questions for a solid foundation.",
+      "Easy, medium, and hard categories.",
+      "Enhances problem-solving skills.",
     ],
   },
   {
     Name: "Web Development",
     Data: [
-      "Creates and maintains websites and web apps.",
-      "Covers front-end technologies (HTML, CSS, JavaScript).",
-      "Involves back-end server-side languages and databases.",
+      "Learn HTML, CSS, and JavaScript basics.",
+      "Master React.js, Next.js, and more.",
+      "Build real-world projects.",
     ],
   },
   {
-    Name: "Web Development",
+    Name: "Theory",
     Data: [
-      "Creates and maintains websites and web apps.",
-      "Covers front-end technologies (HTML, CSS, JavaScript).",
-      "Involves back-end server-side languages and databases.",
+      "Important subjects for placements.",
+      "Includes OS, DBMS, and Networks.",
+      "PDF notes and MCQ-based prep.",
     ],
   },
   {
-    Name: "Web Development",
+    Name: "Compiler",
     Data: [
-      "Creates and maintains websites and web apps.",
-      "Covers front-end technologies (HTML, CSS, JavaScript).",
-      "Involves back-end server-side languages and databases.",
+      "Built-in compiler for programming languages like C++ and Java.",
+      "Separate compiler for web use with live server.",
+      "Lightweight and fast.",
     ],
   },
   {
-    Name: "Web Development",
+    Name: "Contest",
     Data: [
-      "Creates and maintains websites and web apps.",
-      "Covers front-end technologies (HTML, CSS, JavaScript).",
-      "Involves back-end server-side languages and databases.",
+      "Well-structured contests for placement preparation.",
+      "Create your own contests for friendly matches.",
+      "Mock placement contests to simulate real exams.",
     ],
-  }
+  },
 ];
+
 
 
 export default HomePage;
