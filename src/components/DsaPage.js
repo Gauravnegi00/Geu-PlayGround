@@ -65,18 +65,25 @@ function DsaPage() {
   const seconds = time % 60;
 
   return (
-    <div className=" height width centerDiv flex justify-between items-start p-10 ">
+    <div className="height width centerDiv flex justify-between items-start p-10 overflow-x-auto">
       {/* Left Side (Questions) */}
       <div className="w-[55%]">
+        <div className="h-10 w-[110%] bg-slate-600 flex gap-10 p-3 mb-4 rounded-lg font-semibold">
+          <h3 className="w-[10%] text-white">S.No</h3>
+          <h3 className="w-[60%] text-white">Title</h3>
+          <h3 className="w-[30%] text-white">Difficulty</h3>
+        </div>
         {questionData.map((question, index) => (
           <div
             key={index}
             className="bg-white p-6 mb-4 rounded-lg shadow-lg flex justify-between items-center"
             style={{ height: "100px", width: "110%" }}
           >
-            {/* Question and Companies */}
+            {/* Serial Number, Question, and Companies */}
             <div className="flex flex-col justify-between">
-              <h3 className="font-bold">{question.question}</h3>
+              <h3 className="font-bold">
+                {index + 1}. {question.question}
+              </h3>
               <div className="flex gap-3 mt-1">
                 {question.companies.map((company, idx) => (
                   <h5 key={idx} className="text-green-600">
@@ -88,11 +95,13 @@ function DsaPage() {
 
             {/* Solve button and Stats */}
             <div className="flex flex-col justify-between items-end">
-              <button className="bg-green-600 text-white py-1 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300">
-                Solve
-              </button>
-              <div className="flex gap-3 text-gray-500 mt-2">
-                <h5>{question.difficulty}</h5>
+              <div className="flex gap-8">
+                <h5 className="font-semibold">{question.difficulty}</h5>
+                <button className="bg-green-600 text-white py-1 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                  Solve
+                </button>
+              </div>
+              <div className="flex gap-5 text-gray-500 mt-2">
                 <h5>{question.attempts}</h5>
                 <h5>{question.successRate}</h5>
               </div>
@@ -102,10 +111,10 @@ function DsaPage() {
       </div>
 
       {/* Right Side (Problem of the Day) */}
-      <div className="w[45%] flex flex-col gap-5">
+      <div className="w[45%] flex flex-col gap-5 mt-[55px] ">
         <div
           className="bg-slate-200 p-6 rounded-xl shadow-lg"
-          style={{ height: "300px", width: "400px" }}
+          style={{ height: "280px", width: "400px" }}
         >
           <p className="bg-green-600 text-white py-2 px-4 rounded-md text-center mb-4">
             Problem of the Day
@@ -132,13 +141,10 @@ function DsaPage() {
         </div>
         <div
           className="bg-slate-200 p-6 rounded-xl shadow-lg"
-          style={{ height: "300px", width: "400px" }}
+          style={{ height: "280px", width: "400px" }}
         >
-          <p className="bg-green-600 text-white py-2 px-4 rounded-md text-center mb-4">
-            Problem of the Day
-          </p>
           <div className="flex flex-col gap-4">
-            <h2 className="font-bold text-lg">Binary Tree to DLL</h2>
+            <h2 className="font-bold text-lg">Revise your Solved</h2>
             <div className="flex gap-4 text-green-600">
               <h4>JP Morgan</h4>
               <h4>Accolite</h4>
@@ -147,12 +153,11 @@ function DsaPage() {
 
             {/* Countdown Timer */}
             <div className="flex gap-6 items-center">
-              <h4 className="font-bold">
-                {hours}:{minutes < 10 ? `0${minutes}` : minutes}:
-                {seconds < 10 ? `0${seconds}` : seconds}
-              </h4>
               <button className="bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300">
                 Solve Problem
+              </button>
+              <button className="bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                Next
               </button>
             </div>
           </div>
