@@ -3,51 +3,38 @@ import React, { useState, useEffect } from "react";
 const questionData = [
   {
     question: "Indexes of Subarray Sum",
-    companies: ["Amazon", "Facebook", "+5more"],
     difficulty: "Medium",
-    attempts: "1M",
-    successRate: "29.55%",
+    companies: ["Amazon", "Facebook", "+5 more"],
+    tags: ["array"],
   },
   {
     question: "Find Maximum Subarray Sum",
-    companies: ["Google", "Microsoft", "+3more"],
     difficulty: "Hard",
-    attempts: "500K",
-    successRate: "20.55%",
+    companies: ["Microsoft", "Apple"],
+    tags: ["Greedy"],
   },
   {
-    question: "Kth Largest Element",
-    companies: ["Netflix", "Apple", "+4more"],
+    question: "Print Hello World",
     difficulty: "Easy",
-    attempts: "750K",
-    successRate: "40.12%",
+    companies: ["JP Morgan"],
+    tags: ["basic"],
   },
   {
-    question: "Binary Search in Rotated Array",
-    companies: ["Uber", "Amazon", "+2more"],
-    difficulty: "Hard",
-    attempts: "1.2M",
-    successRate: "18.45%",
-  },
-  {
-    question: "Merge Intervals",
-    companies: ["Twitter", "Tesla", "+6more"],
+    question: "Merge Two Sorted Lists",
     difficulty: "Medium",
-    attempts: "900K",
-    successRate: "33.80%",
+    companies: ["Google", "Amazon", "+10 more"],
+    tags: ["sorting"],
   },
   {
-    question: "Reverse Linked List",
-    companies: ["Snapchat", "Pinterest", "+7more"],
-    difficulty: "Easy",
-    attempts: "2M",
-    successRate: "45.15%",
+    question: "Binary Tree to DLL",
+    difficulty: "Hard",
+    companies: ["JP Morgan", "Accolite"],
+    tags: ["data structure"],
   },
 ];
 
 function DsaPage() {
-  // Initialize countdown timer for 24 hours (86400 seconds)
-  const [time, setTime] = useState(86400);
+  const [time, setTime] = useState(86400); // 24 hours in seconds
 
   useEffect(() => {
     if (time > 0) {
@@ -59,16 +46,15 @@ function DsaPage() {
     }
   }, [time]);
 
-  // Convert time to hours, minutes, and seconds
   const hours = Math.floor(time / 3600);
   const minutes = Math.floor((time % 3600) / 60);
   const seconds = time % 60;
 
   return (
-    <div className="height width centerDiv flex justify-between items-start p-10 overflow-x-auto">
+    <div className="height width rounded-md centerDiv flex justify-between items-start p-10 overflow-x-auto">
       {/* Left Side (Questions) */}
       <div className="w-[55%]">
-        <div className="h-10 w-[110%] bg-slate-600 flex gap-10 p-3 mb-4 rounded-lg font-semibold">
+        <div className="h-10 w-[110%] bg-blue-text flex justify-center items-center gap-10 p-3 mb-4 rounded-lg font-semibold">
           <h3 className="w-[10%] text-white">S.No</h3>
           <h3 className="w-[60%] text-white">Title</h3>
           <h3 className="w-[30%] text-white">Difficulty</h3>
@@ -79,31 +65,30 @@ function DsaPage() {
             className="bg-white p-6 mb-4 rounded-lg shadow-lg flex justify-between items-center"
             style={{ height: "100px", width: "110%" }}
           >
-            {/* Serial Number, Question, and Companies */}
             <div className="flex flex-col justify-between">
               <h3 className="font-bold">
                 {index + 1}. {question.question}
               </h3>
-              <div className="flex gap-3 mt-1">
+              <div className="flex gap-4 text-green-700">
                 {question.companies.map((company, idx) => (
-                  <h5 key={idx} className="text-green-600">
-                    {company}
-                  </h5>
+                  <h4 key={idx}>{company}</h4>
                 ))}
               </div>
             </div>
 
-            {/* Solve button and Stats */}
-            <div className="flex flex-col justify-between items-end">
+            <div className="flex flex-col justify-between">
               <div className="flex gap-8">
-                <h5 className="font-semibold">{question.difficulty}</h5>
-                <button className="bg-green-600 text-white py-1 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                <div className="flex flex-col">
+                  <h5 className="font-semibold">{question.difficulty}</h5>
+                  <div className="flex gap-2 text-green-700">
+                    {question.tags.map((tag, idx) => (
+                      <h3 key={idx}>{tag}</h3>
+                    ))}
+                  </div>
+                </div>
+                <button className="bg-light-blue text-blue-text font-semibold py-1 px-4 rounded-lg shadow-md hover:bg-blue-text hover:text-white transition duration-300">
                   Solve
                 </button>
-              </div>
-              <div className="flex gap-5 text-gray-500 mt-2">
-                <h5>{question.attempts}</h5>
-                <h5>{question.successRate}</h5>
               </div>
             </div>
           </div>
@@ -111,19 +96,20 @@ function DsaPage() {
       </div>
 
       {/* Right Side (Problem of the Day) */}
-      <div className="w[45%] flex flex-col gap-5 mt-[55px] ">
+      <div className="w[45%] flex flex-col gap-5">
         <div
           className="bg-slate-200 p-6 rounded-xl shadow-lg"
-          style={{ height: "280px", width: "400px" }}
+          style={{ height: "240px", width: "400px" }}
         >
-          <p className="bg-green-600 text-white py-2 px-4 rounded-md text-center mb-4">
+          <p className="bg-green-600 text-white py-2 px-3 rounded-md text-center mb-3 mt-[-10px]">
             Problem of the Day
           </p>
           <div className="flex flex-col gap-4">
-            <h2 className="font-bold text-lg">Binary Tree to DLL</h2>
+            <h2 className="font-bold text-lg">{questionData[4].question}</h2>
             <div className="flex gap-4 text-green-600">
-              <h4>JP Morgan</h4>
-              <h4>Accolite</h4>
+              {questionData[4].companies.map((company, idx) => (
+                <h4 key={idx}>{company}</h4>
+              ))}
             </div>
             <h4 className="text-green-600">+5 More</h4>
 
@@ -139,19 +125,53 @@ function DsaPage() {
             </div>
           </div>
         </div>
+
+        {/* Session Section */}
+        <div
+          className="bg-slate-200 rounded-xl shadow-lg flex p-4"
+          style={{ height: "180px", width: "400px" }}
+        >
+          <div className="flex-1 flex items-center p-5">
+            <div className="flex flex-col items-center gap-4">
+              <h3 className="text-lg font-semibold">Session</h3>
+              <div className="w-24 h-24 bg-cyan-300 rounded-full flex flex-col items-center justify-center">
+                <h3 className="text-white font-bold">ALL</h3>
+                <h3 className="text-white font-bold">130/3292</h3>
+              </div>
+            </div>
+          </div>
+
+          {/* Difficulty Section */}
+          <div className="flex-1 flex flex-col justify-center items-start gap-3 font-semibold">
+            <div className="flex gap-5">
+              <h3 className="text-blue-600">Easy</h3>
+              <h3>12/20</h3>
+            </div>
+            <div className="flex gap-5">
+              <h3 className="text-pink-600">Medium</h3>
+              <h3>12/20</h3>
+            </div>
+            <div className="flex gap-5">
+              <h3 className="text-sky-600">Hard</h3>
+              <h3>12/20</h3>
+            </div>
+          </div>
+        </div>
+
+        {/* Revise Your Solved Section */}
         <div
           className="bg-slate-200 p-6 rounded-xl shadow-lg"
-          style={{ height: "280px", width: "400px" }}
+          style={{ height: "200px", width: "400px" }}
         >
           <div className="flex flex-col gap-4">
-            <h2 className="font-bold text-lg">Revise your Solved</h2>
+            <h2 className="font-bold text-lg mt-[-10px]">Revise your Solved</h2>
             <div className="flex gap-4 text-green-600">
-              <h4>JP Morgan</h4>
-              <h4>Accolite</h4>
+              {questionData[4].companies.map((company, idx) => (
+                <h4 key={idx}>{company}</h4>
+              ))}
             </div>
             <h4 className="text-green-600">+5 More</h4>
 
-            {/* Countdown Timer */}
             <div className="flex gap-6 items-center">
               <button className="bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300">
                 Solve Problem
